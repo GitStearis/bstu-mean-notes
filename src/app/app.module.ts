@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MaterialModule } from './modules/material.module';
 
 import { AppComponent } from './app.component';
 import { NewNoteComponent } from './components/new-note/new-note.component';
@@ -13,10 +13,9 @@ import { NewNoteComponent } from './components/new-note/new-note.component';
     NewNoteComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    MatButtonModule,
-    MatCheckboxModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

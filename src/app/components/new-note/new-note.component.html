@@ -1,0 +1,9 @@
+<div class="new-note">
+  <button mat-icon-button (click)="toggle()">
+    <mat-icon *ngIf="isToggled">expand_less</mat-icon>
+    <mat-icon *ngIf="!isToggled">expand_more</mat-icon>
+  </button>
+  <ng-container *ngIf="isToggled">
+    Form
+  </ng-container>
+</div>

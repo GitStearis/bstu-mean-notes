@@ -20,12 +20,14 @@
       true,
       "rxjs/Rx"
     ],
+    "import-sources-order": "case-insensitive",
     "import-spacing": true,
     "indent": [
       true,
       "spaces"
     ],
     "interface-over-type-literal": true,
+    "grouped-imports": true,
     "label-position": true,
     "max-line-length": [
       true,
@@ -43,6 +45,7 @@
         ]
       }
     ],
+    "named-imports-order": "case-insensitive",
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [

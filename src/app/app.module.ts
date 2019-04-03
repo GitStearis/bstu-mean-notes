@@ -5,12 +5,14 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppComponent } from './app.component';
 import { NewNoteComponent } from './components/new-note/new-note.component';
+import { NoteComponent } from './components/note/note.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewNoteComponent
+    NewNoteComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,

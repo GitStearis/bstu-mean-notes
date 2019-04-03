@@ -3,7 +3,36 @@
     <mat-icon *ngIf="isToggled">expand_less</mat-icon>
     <mat-icon *ngIf="!isToggled">expand_more</mat-icon>
   </button>
-  <ng-container *ngIf="isToggled">
-    Form
-  </ng-container>
+  <div class="create-note" *ngIf="isToggled">
+    <mat-card class="form-container">
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+      </mat-card-header>
+      <mat-form-field>
+        <input matInput
+               placeholder="Title"
+               (input)="changeTitle($event.target.value)">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="Author"
+               (input)="changeAuthor($event.target.value)">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput
+                  matTextareaAutosize
+                  matAutosizeMinRows=5
+                  (input)="changeContent($event.target.value)"></textarea>
+        <mat-hint>e.g. "Water my plants..."</mat-hint>
+      </mat-form-field>
+      <div class="options">
+        <button class="save-button"
+                color="primary"
+                mat-raised-button>Save</button>
+      </div>
+    </mat-card>
+    <div class="preview-container">
+      <note [note]="note"></note>
+    </div>
+  </div>
 </div>

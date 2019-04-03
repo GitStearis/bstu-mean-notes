@@ -6,3 +6,33 @@
   align-content: center;
   align-items: center;
 }
+
+.create-note {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  margin: 2em 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 32em;
+  margin-right: 2em;
+}
+
+.preview-container {
+  margin-left: 2em;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+.options {
+  margin-top: 2em;
+}

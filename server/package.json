@@ -1,0 +1,31 @@
+{
+  "name": "bstu-mean-notes-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitStearis/bstu-mean-notes.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "express",
+    "mongo",
+    "mongoose"
+  ],
+  "author": "George Puisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitStearis/bstu-mean-notes/issues"
+  },
+  "homepage": "https://github.com/GitStearis/bstu-mean-notes#readme",
+  "dependencies": {
+    "express": "4.16.4",
+    "nodemon": "1.18.11"
+  }
+}

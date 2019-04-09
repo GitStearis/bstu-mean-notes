@@ -9,26 +9,35 @@
         <mat-card-title></mat-card-title>
       </mat-card-header>
       <mat-form-field>
-        <input matInput
+        <input #title
+               id="title"
+               matInput
                placeholder="Title"
-               (input)="changeTitle($event.target.value)">
+               (input)="changeField($event)">
       </mat-form-field>
       <mat-form-field>
-        <input matInput
+        <input #author
+               id="author"
+               matInput
                placeholder="Author"
-               (input)="changeAuthor($event.target.value)">
+               (input)="changeField($event)">
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput
+        <textarea #content
+                  id="content"
+                  matInput
                   matTextareaAutosize
                   matAutosizeMinRows=5
-                  (input)="changeContent($event.target.value)"></textarea>
+                  (input)="changeField($event)"></textarea>
         <mat-hint>e.g. "Water my plants..."</mat-hint>
       </mat-form-field>
       <div class="options">
         <button class="save-button"
                 color="primary"
-                mat-raised-button>Save</button>
+                mat-raised-button
+                (click)="saveNote()">
+                Save
+        </button>
       </div>
     </mat-card>
     <div class="preview-container">

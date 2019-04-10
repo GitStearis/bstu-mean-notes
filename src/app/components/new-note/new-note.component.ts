@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Note from '../../interfaces/note.interface';
 import { DefaultNote, NoteFieldMap } from '../../constants/note';
+import { NoteService } from '../../services/note.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class NewNoteComponent implements OnInit {
   isToggled = false;
   note: Note;
 
-  constructor() { }
+  constructor(private noteService: NoteService) { }
 
   ngOnInit() {
     this.note = DefaultNote;
@@ -31,10 +32,15 @@ export class NewNoteComponent implements OnInit {
     this.note[field] = value;
   }
 
-  saveNote () {
+  setViewToDefault () {
     this.title.nativeElement.value = '';
     this.author.nativeElement.value = '';
     this.content.nativeElement.value = '';
+  }
+
+  saveNote () {
+    this.setViewToDefault();
+    this.noteService.saveNote(this.note);
     this.note = DefaultNote;
   }
 }

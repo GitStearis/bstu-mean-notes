@@ -1,12 +1,22 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
 
-const PORT = 3000;
+const mongoose = require("./database/mongoose");
 
-app.get("/", (req, res) => {
-   res.send("Hello World");
+const app = require("express")();
+const server = require("http").Server(app);
+const bodyParser = require("body-parser");
+const router = require("./routes/note");
+
+mongoose.connect();
+
+app.use(bodyParser.json());
+app.use((request, response, next) => {
+   response.header("Access-Control-Allow-Credentials", "true");
+   response.header("Access-Control-Allow-Origin", "*");
+   response.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+   response.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization");
+   next();
 });
+app.use("/api", router);
 
-const server = app.listen(PORT, function () {
-   console.log(`Server is listening at port ${PORT}`);
-});
+server.listen(process.env.PORT);

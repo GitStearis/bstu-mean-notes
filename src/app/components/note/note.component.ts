@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../../interfaces/note.interface';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css']

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import Note from '../../interfaces/note.interface';
+import { Note } from '../../interfaces/note.interface';
 import { DefaultNote, NoteFieldMap } from '../../constants/note';
 import { NoteService } from '../../services/note.service';
 

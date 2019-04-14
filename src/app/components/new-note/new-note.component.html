@@ -10,21 +10,21 @@
       </mat-card-header>
       <mat-form-field>
         <input #title
-               id="title"
+               id="title-input"
                matInput
                placeholder="Title"
                (input)="changeField($event)">
       </mat-form-field>
       <mat-form-field>
         <input #author
-               id="author"
+               id="author-input"
                matInput
                placeholder="Author"
                (input)="changeField($event)">
       </mat-form-field>
       <mat-form-field>
         <textarea #content
-                  id="content"
+                  id="content-input"
                   matInput
                   matTextareaAutosize
                   matAutosizeMinRows=5

@@ -1,20 +1,20 @@
 export const DefaultNote = {
-  Title: 'Title',
-  Author: 'Author',
-  Content: 'Content',
-  Date: new Date()
+  title: 'Title',
+  author: 'Author',
+  content: 'Content',
+  date: new Date()
 };
 
 export const NoteIds = {
-  title: 'title',
-  author: 'author',
-  content: 'content'
+  title: 'title-input',
+  author: 'author-input',
+  content: 'content-input'
 };
 
 export const NoteFields = {
-  title: 'Title',
-  author: 'Author',
-  content: 'Content'
+  title: 'title',
+  author: 'author',
+  content: 'content'
 };
 
 export const NoteFieldMap = new Map<string, string>([

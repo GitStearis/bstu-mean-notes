@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import Note from '../../interfaces/note.interface';
+import { Note } from '../../interfaces/note.interface';
 
 @Component({
   selector: 'note',
@@ -15,15 +15,15 @@ export class NoteComponent implements OnInit {
   }
 
   get title () {
-    return this.note.Title;
+    return this.note.title;
   }
 
   get author () {
-    return this.note.Author;
+    return this.note.author;
   }
 
   get content () {
-    return this.note.Content;
+    return this.note.content;
   }
 
 }

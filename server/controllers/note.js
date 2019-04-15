@@ -13,7 +13,7 @@ module.exports.createNote = (request, response) => {
   const data = request.body;
   Notes.create(data).then(note => {
     if (note) {
-      return response.status(200).json();
+      return response.status(200).json(note._id);
     }
     return response.status(500).json();
   });

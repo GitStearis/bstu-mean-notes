@@ -22,7 +22,7 @@ export class NoteService {
   }
 
   saveNote (note: Note) {
-    return this.http.post(this.singleNoteUrl, note).subscribe();
+    return this.http.post(this.singleNoteUrl, note);
   }
 
   getNotes () {

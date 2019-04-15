@@ -2,10 +2,10 @@
   <ng-container *ngIf="isLoaded">
     <div class="notes-container">
       <div class="column">
-        <note *ngFor="let note of leftColumn" [note]="note" (noteDeleted)="noteDeleteHandler($event)"></note>
+        <note *ngFor="let note of leftColumn" [note]="note"></note>
       </div>
       <div class="column">
-        <note *ngFor="let note of rightColumn" [note]="note" (noteDeleted)="noteDeleteHandler($event)"></note>
+        <note *ngFor="let note of rightColumn" [note]="note"></note>
       </div>
     </div>
   </ng-container>

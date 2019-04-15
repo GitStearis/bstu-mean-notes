@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../../services/note.service';
+import { ViewService } from '../../services/view.service';
 import { Note } from '../../interfaces/note.interface';
 
 @Component({
@@ -11,9 +12,12 @@ export class NoteListComponent implements OnInit {
   notes: Note[] = [];
   isLoaded = false;
 
-  constructor (private noteService: NoteService) {}
+  constructor (private noteService: NoteService,
+               private viewService: ViewService) {}
 
   ngOnInit () {
+    this.viewService.addNoteObservable.subscribe(note => this.addNote(note));
+    this.viewService.deleteNoteObservable.subscribe(id => this.deleteNote(id));
     this.noteService.getNotes().subscribe(notes => {
       this.notes = notes.map(note => NoteService.mapNoteDto(note));
       this.isLoaded = true;
@@ -32,8 +36,11 @@ export class NoteListComponent implements OnInit {
     }
   }
 
-  noteDeleteHandler (id: string) {
+  addNote (note: Note) {
+    this.notes.push(note);
+  }
+
+  deleteNote (id: string) {
     this.notes = this.notes.filter(note => note.id !== id);
-    this.noteService.deleteNote(id);
   }
 }

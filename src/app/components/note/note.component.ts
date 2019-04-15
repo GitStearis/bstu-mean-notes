@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { ViewService } from '../../services/view.service';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../interfaces/note.interface';
 
@@ -10,12 +11,12 @@ import { Note } from '../../interfaces/note.interface';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
-  @Output() noteDeleted = new EventEmitter();
   @Input() isPreview = false;
   @Input() note: Note;
   isHovered = false;
 
-  constructor () {}
+  constructor (private viewService: ViewService,
+               private noteService: NoteService) {}
 
   ngOnInit () {}
 
@@ -50,6 +51,9 @@ export class NoteComponent implements OnInit {
   }
 
   deleteNote () {
-    this.noteDeleted.emit(this.note.id);
+    this.viewService.deleteNote(this.note.id);
+    if (this.note.id) {
+      this.noteService.deleteNote(this.note.id);
+    }
   }
 }

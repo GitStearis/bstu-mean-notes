@@ -20,7 +20,20 @@ module.exports.createNote = (request, response) => {
 };
 
 module.exports.updateNote = (request, response) => {
-  return response.status(200).json({});
+  const data = request.body;
+  Notes.findOneAndUpdate({ _id: data.id }, {
+    $set: {
+      title: data.title,
+      content: data.content,
+      author: data.author,
+      date: data.date
+    }
+  }).then(note => {
+    if (note) {
+      return response.status(200).json();
+    }
+    return response.status(500).json();
+  });
 };
 
 module.exports.deleteNote = (request, response) => {

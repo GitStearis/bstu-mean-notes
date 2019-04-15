@@ -3,7 +3,7 @@
     <mat-icon *ngIf="isToggled">expand_less</mat-icon>
     <mat-icon *ngIf="!isToggled">expand_more</mat-icon>
   </button>
-  <div class="create-note" *ngIf="isToggled">
+  <div class="create-note" [ngClass]="isToggled ? '' : 'hidden'">
     <mat-card class="form-container">
       <mat-card-header>
         <mat-card-title></mat-card-title>
@@ -32,12 +32,26 @@
         <mat-hint>e.g. "Water my plants..."</mat-hint>
       </mat-form-field>
       <div class="options">
-        <button class="save-button"
+        <button *ngIf="!isInEditMode"
+                class="save-button"
                 color="primary"
                 mat-raised-button
                 (click)="saveNote()">
                 Save
         </button>
+        <button *ngIf="isInEditMode"
+                class="save-button"
+                mat-raised-button
+                (click)="leaveEditMode()">
+                Cancel
+        </button>
+        <button *ngIf="isInEditMode"
+                class="save-button"
+                color="primary"
+                mat-raised-button
+                (click)="saveEditedNote()">
+                Save changes
+        </button> 
       </div>
     </mat-card>
     <div class="preview-container">

@@ -1,3 +1,10 @@
+export const EmptyNote = {
+  title: '',
+  author: '',
+  content: '',
+  date: new Date()
+};
+
 export const DefaultNote = {
   title: 'Lorem Ipsum',
   author: 'Author',

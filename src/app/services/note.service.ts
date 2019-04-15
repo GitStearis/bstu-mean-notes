@@ -33,4 +33,8 @@ export class NoteService {
     const url = `${this.singleNoteUrl}/${id}`;
     return this.http.delete(url).subscribe();
   }
+
+  updateNote (note: Note) {
+    return this.http.put(this.singleNoteUrl, note);
+  }
 }

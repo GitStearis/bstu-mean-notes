@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { Note } from '../../interfaces/note.interface';
-import { DefaultNote, NoteFieldMap } from '../../constants/note';
+import { DefaultNote, NoteFieldMap, EmptyNote } from '../../constants/note';
 import { NoteService } from '../../services/note.service';
 import { ViewService } from '../../services/view.service';
 
@@ -14,13 +14,17 @@ export class NewNoteComponent implements OnInit {
   @ViewChild('title') title: ElementRef;
   @ViewChild('author') author: ElementRef;
   @ViewChild('content') content: ElementRef;
+  isInEditMode = false;
   isToggled = false;
   note: Note;
+
+  editorRendered = new EventEmitter();
 
   constructor(private noteService: NoteService,
               private viewService: ViewService) { }
 
   ngOnInit() {
+    this.viewService.editNoteObservable.subscribe(note => this.startEditMode(note));
     this.note = DefaultNote;
   }
 
@@ -34,18 +38,41 @@ export class NewNoteComponent implements OnInit {
     this.note[field] = value;
   }
 
-  setViewToDefault () {
-    this.title.nativeElement.value = '';
-    this.author.nativeElement.value = '';
-    this.content.nativeElement.value = '';
+  setView (note: Note) {
+    this.title.nativeElement.value = note.title;
+    this.author.nativeElement.value = note.author;
+    this.content.nativeElement.value = note.content;
+  }
+
+  setViewToEmpty () {
+    this.setView(EmptyNote);
   }
 
   saveNote () {
-    this.setViewToDefault();
+    this.setViewToEmpty();
     this.noteService.saveNote(this.note).subscribe((id: string) => {
       this.note.id = id;
       this.viewService.addNote(this.note);
       this.note = DefaultNote;
+    });
+  }
+
+  startEditMode (note: Note) {
+    this.isToggled = true;
+    this.isInEditMode = true;
+    this.setView(note);
+    this.note = note;
+  }
+
+  leaveEditMode () {
+    this.setViewToEmpty();
+    this.isInEditMode = false;
+    this.isToggled = false;
+  }
+
+  saveEditedNote () {
+    this.noteService.updateNote(this.note).subscribe(() => {
+      this.leaveEditMode();
     });
   }
 }

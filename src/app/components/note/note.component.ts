@@ -52,8 +52,10 @@ export class NoteComponent implements OnInit {
 
   deleteNote () {
     this.viewService.deleteNote(this.note.id);
-    if (this.note.id) {
-      this.noteService.deleteNote(this.note.id);
-    }
+    this.noteService.deleteNote(this.note.id);
+  }
+
+  editNote () {
+    this.viewService.editNote(this.note);
   }
 }

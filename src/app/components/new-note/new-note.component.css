@@ -7,6 +7,12 @@
   align-items: center;
 }
 
+.hidden {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
 .create-note {
   display: flex;
   flex-direction: row;
@@ -34,5 +40,11 @@
 }
 
 .options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  
   margin-top: 2em;
 }

@@ -9,7 +9,7 @@
   <mat-card-actions >
     <div class="buttons-container">
       <ng-container *ngIf="areButtonsShown">
-        <button mat-icon-button color="primary">
+        <button mat-icon-button color="primary" (click)="editNote()">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" (click)="deleteNote()">

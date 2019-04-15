@@ -36,7 +36,8 @@
                 class="save-button"
                 color="primary"
                 mat-raised-button
-                (click)="saveNote()">
+                (click)="saveNote()"
+                [disabled]="viewIsEmpty">
                 Save
         </button>
         <button *ngIf="isInEditMode"
@@ -49,7 +50,8 @@
                 class="save-button"
                 color="primary"
                 mat-raised-button
-                (click)="saveEditedNote()">
+                (click)="saveEditedNote()"
+                [disabled]="viewIsEmpty">
                 Save changes
         </button> 
       </div>

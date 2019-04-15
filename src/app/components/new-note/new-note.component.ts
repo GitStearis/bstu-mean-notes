@@ -28,6 +28,12 @@ export class NewNoteComponent implements OnInit {
     this.note = DefaultNote;
   }
 
+  get viewIsEmpty () {
+    return this.title.nativeElement.value.length === 0 ||
+           this.author.nativeElement.value.length === 0 ||
+           this.content.nativeElement.value.length === 0;
+  }
+
   toggle() {
     this.isToggled = !this.isToggled;
   }
@@ -65,6 +71,7 @@ export class NewNoteComponent implements OnInit {
   }
 
   leaveEditMode () {
+    this.note = DefaultNote;
     this.setViewToEmpty();
     this.isInEditMode = false;
     this.isToggled = false;

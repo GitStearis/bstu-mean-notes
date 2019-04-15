@@ -31,4 +31,9 @@ export class NoteListComponent implements OnInit {
       return this.notes.filter((note, index) => index % 2 === 1);
     }
   }
+
+  noteDeleteHandler (id: string) {
+    this.notes = this.notes.filter(note => note.id !== id);
+    this.noteService.deleteNote(id);
+  }
 }

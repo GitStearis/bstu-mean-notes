@@ -1,7 +1,11 @@
 export const DefaultNote = {
-  title: 'Title',
+  title: 'Lorem Ipsum',
   author: 'Author',
-  content: 'Content',
+  content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Proin id eros eget nibh aliquam tristique. Etiam sed interdum arcu, sed consequat justo.
+            Suspendisse condimentum gravida feugiat. Nam a luctus justo, vitae facilisis dolor.
+            Phasellus fringilla, diam id fringilla hendrerit, felis enim tincidunt ligula, id porta ligula massa ut dolor.
+            Nulla suscipit metus in nunc cursus varius.`,
   date: new Date()
 };
 

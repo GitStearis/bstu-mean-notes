@@ -6,10 +6,13 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class NoteService {
+  private mulripleNotesUrl = `${environment.API_URL}/notes`;
+  private singleNoteUrl = `${environment.API_URL}/note`;
 
   constructor(private http: HttpClient) { }
 
   static mapNoteDto (dto: NoteDto): Note {
+    dto.date = new Date(dto.date);
     const note = {
       ...dto,
       id: dto._id
@@ -19,12 +22,15 @@ export class NoteService {
   }
 
   saveNote (note: Note) {
-    const url = `${environment.API_URL}/note`;
-    return this.http.post(url, note).subscribe();
+    return this.http.post(this.singleNoteUrl, note).subscribe();
   }
 
   getNotes () {
-    const url = `${environment.API_URL}/notes`;
-    return this.http.get<NoteDto[]>(url);
+    return this.http.get<NoteDto[]>(this.mulripleNotesUrl);
+  }
+
+  deleteNote (id: string) {
+    const url = `${this.singleNoteUrl}/${id}`;
+    return this.http.delete(url).subscribe();
   }
 }

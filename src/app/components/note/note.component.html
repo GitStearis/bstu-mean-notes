@@ -1,9 +1,21 @@
 <mat-card class="preview">
   <mat-card-header>
     <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-subtitle>{{ author }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ author }} — {{ date }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>{{ content }}</p>
   </mat-card-content>
+  <mat-card-actions >
+    <div class="buttons-container">
+      <ng-container *ngIf="areButtonsShown">
+        <button mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteNote()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+    </div>
+  </mat-card-actions>
 </mat-card>

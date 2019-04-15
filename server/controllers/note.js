@@ -3,26 +3,31 @@ const Notes = require("../database/note");
 module.exports.getNotes = (request, response) => {
   Notes.find({}, (error, notes) => {
     if (notes) {
-      response.status(200).json(notes);
+      return response.status(200).json(notes);
     }
-    response.status(500);
-  })
+    return response.status(500).json();
+  });
 };
 
 module.exports.createNote = (request, response) => {
   const data = request.body;
   Notes.create(data).then(note => {
     if (note) {
-      response.status(200);
+      return response.status(200).json();
     }
-    response.status(500);
-  })
+    return response.status(500).json();
+  });
 };
 
 module.exports.updateNote = (request, response) => {
-  response.status(200).json({});
+  return response.status(200).json({});
 };
 
 module.exports.deleteNote = (request, response) => {
-  response.status(200).json({});
+  Notes.findOneAndDelete({ _id: request.params.id }).then(note => {
+    if (note) {
+      return response.status(200).json();
+    }
+    return response.status(500).json();
+  });
 };

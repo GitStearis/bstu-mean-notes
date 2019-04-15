@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
+import { NoteService } from '../../services/note.service';
 import { Note } from '../../interfaces/note.interface';
+
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,12 +10,14 @@ import { Note } from '../../interfaces/note.interface';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
+  @Output() noteDeleted = new EventEmitter();
+  @Input() isPreview = false;
   @Input() note: Note;
+  isHovered = false;
 
-  constructor() { }
+  constructor () {}
 
-  ngOnInit() {
-  }
+  ngOnInit () {}
 
   get title () {
     return this.note.title;
@@ -23,8 +27,29 @@ export class NoteComponent implements OnInit {
     return this.note.author;
   }
 
+  get date () {
+    return this.note.date.toISOString().substring(0, 10);
+  }
+
   get content () {
     return this.note.content;
   }
 
+  get areButtonsShown () {
+    return this.isHovered && !this.isPreview;
+  }
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.isHovered = true;
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.isHovered = false;
+  }
+
+  deleteNote () {
+    this.noteDeleted.emit(this.note.id);
+  }
 }

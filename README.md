@@ -1,27 +1,63 @@
-# BstuMeanNotes
+# BSTU MEAN Notes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This project is a simple application for notes managing. Built with MEAN stack.
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone project to your computer.
 
-## Code scaffolding
+```
+$ git clone https://github.com/GitStearis/bstu-mean-notes.git
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+To start with this project, you should have [Node](https://nodejs.org/en/download/package-manager/) installed. If you want to run your database locally, install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Installing
 
-## Running unit tests
+Install all dependencies in a root folder and in a `./server` folder.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+$ npm install
+$ cd ./server && npm install
+```
 
-## Running end-to-end tests
+### Configuring
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To launch server you should create `.env` file in a `./server` directory. File should contain:
 
-## Further help
+```
+PORT = 3000
+MONGODB_CONNECTION = "mongodb://localhost:27017/bstu-mean"
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* `PORT` - Port for the development needs. Use `3000` if you are not sure about this;
+* `MONGODB_CONNECTION` - a MongoDB [connection string](https://docs.mongodb.com/manual/reference/connection-string/);
+
+Client configuration could be found here: `./src/environments/environment.ts`. Nowit contains only API path. Replace it if you use deployed development server build.
+
+
+### Launching
+
+To run client & server on localhost type `npm start` in a root folder.
+
+```
+$ npm start
+```
+
+`npm start` script launches client and server at the same time using `concurrently` npm package. Discover `package.json` for more details.
+
+## Built With
+
+- [Node.js](https://github.com/nodejs/node) - JavaScript runtime for server;
+- [npm](https://github.com/npm/npm) - Package manager for JavaScript;
+- [Express.js](https://github.com/expressjs/express) - Framework for Node.js;
+- [Angular CLI](https://github.com/angular/angular-cli) - CLI for Angular application & components generating;
+- [MongoDB](https://www.mongodb.com/) - NoSQL Database;
+- [Mongoose](http://mongoosejs.com/) - ODM for MongoDB.
+
+## Developed by
+
+* **George Puisha** - [GitStearis](https://github.com/GitStearis).
+

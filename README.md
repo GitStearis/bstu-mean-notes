@@ -1,6 +1,6 @@
 # BSTU MEAN Notes
 
-This project is a simple application for notes managing. Built with MEAN stack.
+This project is a simple application for notes managing. Built with [MEAN](https://www.ibm.com/cloud/learn/mean-stack-explained) stack. Check out russian [README.md](https://github.com/GitStearis/bstu-mean-notes/blob/master/README_RUS.md), if you having difficulties.
 
 ## Getting started
 
@@ -33,9 +33,9 @@ MONGODB_CONNECTION = "mongodb://localhost:27017/bstu-mean"
 ```
 
 * `PORT` - Port for the development needs. Use `3000` if you are not sure about this;
-* `MONGODB_CONNECTION` - a MongoDB [connection string](https://docs.mongodb.com/manual/reference/connection-string/);
+* `MONGODB_CONNECTION` - a MongoDB [connection string](https://docs.mongodb.com/manual/reference/connection-string/).
 
-Client configuration could be found here: `./src/environments/environment.ts`. Nowit contains only API path. Replace it if you use deployed development server build.
+Client configuration could be found here: `./src/environments/environment.ts`. Now it contains only API path. Replace it if you use deployed development server build.
 
 
 ### Launching

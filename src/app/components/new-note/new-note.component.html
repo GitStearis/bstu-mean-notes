@@ -1,0 +1,63 @@
+<div class="new-note">
+  <button mat-icon-button (click)="toggle()">
+    <mat-icon *ngIf="isToggled">expand_less</mat-icon>
+    <mat-icon *ngIf="!isToggled">expand_more</mat-icon>
+  </button>
+  <div class="create-note" [ngClass]="isToggled ? '' : 'hidden'">
+    <mat-card class="form-container">
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+      </mat-card-header>
+      <mat-form-field>
+        <input #title
+               id="title-input"
+               matInput
+               placeholder="Title"
+               (input)="changeField($event)">
+      </mat-form-field>
+      <mat-form-field>
+        <input #author
+               id="author-input"
+               matInput
+               placeholder="Author"
+               (input)="changeField($event)">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea #content
+                  id="content-input"
+                  matInput
+                  matTextareaAutosize
+                  matAutosizeMinRows=5
+                  (input)="changeField($event)"></textarea>
+        <mat-hint>e.g. "Water my plants..."</mat-hint>
+      </mat-form-field>
+      <div class="options">
+        <button *ngIf="!isInEditMode"
+                class="save-button"
+                color="primary"
+                mat-raised-button
+                (click)="saveNote()"
+                [disabled]="viewIsEmpty">
+                Save
+        </button>
+        <button *ngIf="isInEditMode"
+                class="save-button"
+                mat-raised-button
+                (click)="leaveEditMode()">
+                Cancel
+        </button>
+        <button *ngIf="isInEditMode"
+                class="save-button"
+                color="primary"
+                mat-raised-button
+                (click)="saveEditedNote()"
+                [disabled]="viewIsEmpty">
+                Save changes
+        </button> 
+      </div>
+    </mat-card>
+    <div class="preview-container">
+      <note [note]="note" [isPreview]="true"></note>
+    </div>
+  </div>
+</div>

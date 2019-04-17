@@ -1,0 +1,12 @@
+<div class="note-list">
+  <ng-container *ngIf="isLoaded">
+    <div class="notes-container">
+      <div class="column">
+        <note *ngFor="let note of leftColumn" [note]="note"></note>
+      </div>
+      <div class="column">
+        <note *ngFor="let note of rightColumn" [note]="note"></note>
+      </div>
+    </div>
+  </ng-container>
+</div>

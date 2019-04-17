@@ -1,0 +1,18 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+
+  padding: 2em;
+}
+
+.app > * {
+  width: 100%;
+}
+
+.app > button {
+  width: auto;
+}
